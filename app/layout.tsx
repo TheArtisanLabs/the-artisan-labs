@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/lib/theme';
 import { ConvexClientProvider } from '@/components/Providers/ConvexClientProvider';
 import CustomCursor from '@/components/ui/CustomCursor';
 import Navbar from '@/components/layout/Navbar';
+import { Analytics } from '@vercel/analytics/next';
 
 const jetbrainsMono = JetBrains_Mono({
 	variable: '--font-jetbrains-mono',
@@ -33,11 +34,12 @@ export default function RootLayout({
 			<body className="min-h-full antialiased">
 				<ConvexClientProvider>
 					<ThemeProvider>
-					<CustomCursor />
-					<Navbar />
-					<main className="flex flex-1 flex-col">{children}</main>
+						<CustomCursor />
+						<Navbar />
+						<main className="flex flex-1 flex-col">{children}</main>
 					</ThemeProvider>
 				</ConvexClientProvider>
+				<Analytics />
 			</body>
 		</html>
 	);
