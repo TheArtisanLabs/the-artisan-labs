@@ -1,13 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
-
-const PHRASES = [
-	'crafting web experiences',
-	'shipping mobile products',
-	'designing with intent',
-	'building custom software',
-];
+import { useEffect, useState, useCallback, Fragment } from 'react';
+import Image from 'next/image';
+import { useQuery, useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
 
 function useTypewriter(phrases: string[]) {
 	const [text, setText] = useState('');
@@ -16,6 +12,7 @@ function useTypewriter(phrases: string[]) {
 	const [del, setDel] = useState(false);
 
 	const tick = useCallback(() => {
+		if (phrases.length === 0) return;
 		const p = phrases[pi];
 		if (del) {
 			if (ci === 0) {
@@ -60,12 +57,20 @@ const WORDS_LINE2 = [
 ];
 
 export default function Hero() {
-	const text = useTypewriter(PHRASES);
+	const phrases = useQuery(api.phrases.getAll);
+	const seedPhrases = useMutation(api.phrases.seed);
+	const text = useTypewriter(phrases?.map((p) => p.text) ?? []);
+
+	useEffect(() => {
+		if (phrases?.length === 0) {
+			seedPhrases();
+		}
+	}, [phrases, seedPhrases]);
 
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-(--bg) px-6 pt-30 pb-20 text-center"
+			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-(--bg) px-6 pt-30 pb-36 text-center"
 		>
 			<div
 				className="pointer-events-none absolute inset-0"
@@ -77,8 +82,17 @@ export default function Hero() {
 				}}
 			/>
 
+			<Image
+				src="/images/logo/logo-transparent.png"
+				alt=""
+				aria-hidden="true"
+				width={526}
+				height={526}
+				priority
+				className="pointer-events-none absolute top-1/2 left-1/2 h-[55vmin] w-[55vmin] -translate-x-1/2 -translate-y-1/2 animate-[dotDrift_14s_ease-in-out_infinite] opacity-20"
+			/>
 			<div
-				className="pointer-events-none absolute top-1/2 left-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
+				className="pointer-events-none absolute top-1/3 left-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
 				style={{
 					background:
 						'radial-gradient(circle at center, rgba(64,98,187,0.12) 0%, transparent 60%)',
@@ -87,40 +101,42 @@ export default function Hero() {
 
 			<div className="relative z-10 mx-auto max-w-225">
 				<h1 className="mb-2 text-[clamp(36px,8vw,96px)] leading-[1.15] font-bold tracking-tighter text-(--fg)">
-					{WORDS_LINE1.map((w) => (
-						<span
-							key={w.i}
-							className="inline-block animate-[wordUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
-							style={{
-								opacity: 0,
-								transform: 'translateY(50px)',
-								animationDelay: `${w.i * 0.1}s`,
-							}}
-						>
-							{w.text}{' '}
-						</span>
-					))}
+					{WORDS_LINE1.flatMap((w) => [
+						<Fragment key={w.i}>
+							<span
+								className="inline-block animate-[wordUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+								style={{
+									opacity: 0,
+									transform: 'translateY(50px)',
+									animationDelay: `${w.i * 0.1}s`,
+								}}
+							>
+								{w.text}
+							</span>{' '}
+						</Fragment>,
+					])}
 				</h1>
 				<h1 className="mb-2 text-[clamp(36px,8vw,96px)] leading-[1.15] font-bold tracking-tighter text-(--fg)">
-					{WORDS_LINE2.map((w) => (
-						<span
-							key={w.i}
-							className="inline-block animate-[wordUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
-							style={{
-								opacity: 0,
-								transform: 'translateY(50px)',
-								animationDelay: `${w.i * 0.1}s`,
-							}}
-						>
-							{w.text}{' '}
-						</span>
-					))}
+					{WORDS_LINE2.flatMap((w) => [
+						<Fragment key={w.i}>
+							<span
+								className="inline-block animate-[wordUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+								style={{
+									opacity: 0,
+									transform: 'translateY(50px)',
+									animationDelay: `${w.i * 0.1}s`,
+								}}
+							>
+								{w.text}
+							</span>{' '}
+						</Fragment>,
+					])}
 				</h1>
 
 				<p className="mt-8 min-h-[1.8em] text-[clamp(14px,2vw,20px)] text-(--fg-80)">
 					<span className="text-(--accent)">{'// '}</span>
 					{text}
-					<span className="inline-block w-2 animate-[blink_0.8s_step-end_infinite] font-bold text-(--accent)">
+					<span className="inline-block w-2 animate-[blink_0.8s_step-end_infinite] font-normal text-(--accent)">
 						|
 					</span>
 				</p>

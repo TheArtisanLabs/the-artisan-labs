@@ -7,9 +7,9 @@ export default function About() {
 	return (
 		<Section id="about">
 			<SectionInner>
-				<Reveal className="grid grid-cols-[1fr_2fr] items-start gap-15 md:grid-cols-1 md:gap-6">
+				<Reveal className="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_2fr] md:gap-15">
 					<div
-						className="text-[clamp(80px,12vw,180px)] leading-none font-bold tracking-tighter select-none"
+						className="text-[clamp(80px,12vw,180px)] leading-none font-normal tracking-tighter select-none"
 						style={{ color: 'var(--accent)', opacity: 0.12 }}
 					>
 						01
@@ -18,7 +18,7 @@ export default function About() {
 						<span className="mb-4 block text-[13px] tracking-[3px] text-(--accent) uppercase">
 							{'// who we are'}
 						</span>
-						<h2 className="mb-6 text-[clamp(28px,4vw,48px)] leading-tight font-bold tracking-tight text-(--fg)">
+						<h2 className="font-heading mb-6 text-[clamp(28px,4vw,48px)] leading-tight font-thin tracking-widest text-(--fg)">
 							About
 						</h2>
 						<p className="max-w-160 text-[clamp(15px,1.2vw,18px)] text-(--fg-80)">

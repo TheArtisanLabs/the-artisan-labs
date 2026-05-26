@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme';
+import { ConvexClientProvider } from '@/components/Providers/ConvexClientProvider';
 import CustomCursor from '@/components/ui/CustomCursor';
 import Navbar from '@/components/layout/Navbar';
 
@@ -29,11 +30,13 @@ export default function RootLayout({
 			suppressHydrationWarning
 		>
 			<body className="min-h-full antialiased">
-				<ThemeProvider>
+				<ConvexClientProvider>
+					<ThemeProvider>
 					<CustomCursor />
 					<Navbar />
 					<main className="flex flex-1 flex-col">{children}</main>
-				</ThemeProvider>
+					</ThemeProvider>
+				</ConvexClientProvider>
 			</body>
 		</html>
 	);

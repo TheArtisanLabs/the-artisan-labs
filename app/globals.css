@@ -5,6 +5,7 @@
 	--color-brand-blue: #4062bb;
 	--color-brand-light: #eef1ef;
 	--font-sans: var(--font-jetbrains-mono);
+	--font-heading: 'Avenir', 'Segoe UI', system-ui, sans-serif;
 }
 
 :root {
