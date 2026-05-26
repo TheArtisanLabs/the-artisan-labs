@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 	title: 'Artisan Labs',
 	description:
 		"We don't just write code. We build things that last. — Artisan Labs",
+	icons: '/images/logo/logo-transparent.png',
 };
 
 export default function RootLayout({

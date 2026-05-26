@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Artisan Labs — Landing Page
+
+A single-page agency landing site built with Next.js 16, Convex, and Tailwind CSS v4.
+
+## Stack
+
+| Layer        | Tech                                         |
+| ------------ | -------------------------------------------- |
+| Framework    | Next.js 16 (App Router)                      |
+| Language     | TypeScript (strict)                          |
+| Styling      | Tailwind CSS v4 + `@tailwindcss/postcss`     |
+| Backend      | Convex (schema, queries, mutations, seeding) |
+| UI/Animation | IntersectionObserver-based, CSS keyframes    |
+| Lint         | ESLint 9 + eslint-config-next                |
+| Format       | Prettier 3 + prettier-plugin-tailwindcss     |
+| Icons        | Inline SVGs (no icon library)                |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data Seeding
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+On first load, each section seeds its Convex table with defaults if empty. Tables:
 
-## Learn More
+- **services** — web apps, mobile apps, UI/UX design, custom software
+- **portfolio** — featured projects (Project Foundry, Sylva, Deck Chair)
+- **stack** — technologies list (React, Next.js, TypeScript, etc.)
+- **phrases** — typewriter phrases for Hero section
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command             | Description              |
+| ------------------- | ------------------------ |
+| `npm run dev`       | Start dev server         |
+| `npm run build`     | Production build         |
+| `npm run lint`      | ESLint check             |
+| `npm run format`    | Prettier format all      |
+| `npx convex dev`    | Run Convex dev server    |
+| `npx convex deploy` | Deploy Convex functions  |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/               # Next.js App Router (layout, page, globals.css)
+components/
+  layout/          # Navbar, Footer
+  sections/        # Hero, About, Services, Portfolio, Stack, Contact
+  ui/              # Shared UI primitives
+  Providers/       # ConvexClientProvider
+convex/            # Schema, queries, mutations, seed data
+lib/               # utils (cn), theme (ThemeProvider + useTheme)
+```
