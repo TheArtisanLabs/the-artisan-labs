@@ -1,15 +1,21 @@
-"use client";
-
-import { useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Services from '@/components/sections/Services';
+import Portfolio from '@/components/sections/Portfolio';
+import Stack from '@/components/sections/Stack';
+import Contact from '@/components/sections/Contact';
+import Footer from '@/components/layout/Footer';
 
 export default function Home() {
-  const tasks = useQuery(api.tasks.get);
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      {tasks?.map((task) => (
-        <div key={task._id}>{task.text}</div>
-      ))}
-    </div>
-  );
+	return (
+		<>
+			<Hero />
+			<About />
+			<Services />
+			<Portfolio />
+			<Stack />
+			<Contact />
+			<Footer />
+		</>
+	);
 }

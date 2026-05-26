@@ -1,26 +1,118 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import 'tailwindcss';
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-brand-dark: #1c2321;
+	--color-brand-blue: #4062bb;
+	--color-brand-light: #eef1ef;
+	--font-sans: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+	--bg: #eef1ef;
+	--fg: #1c2321;
+	--fg-80: rgba(28, 35, 33, 0.8);
+	--fg-50: rgba(28, 35, 33, 0.5);
+	--fg-20: rgba(28, 35, 33, 0.2);
+	--accent: #4062bb;
+	--accent-30: rgba(64, 98, 187, 0.3);
+	--accent-20: rgba(64, 98, 187, 0.2);
+	--accent-10: rgba(64, 98, 187, 0.1);
+	--border: rgba(64, 98, 187, 0.2);
+	--surface: #ffffff;
+}
+
+.dark {
+	--bg: #1c2321;
+	--fg: #eef1ef;
+	--fg-80: rgba(238, 241, 239, 0.8);
+	--fg-50: rgba(238, 241, 239, 0.5);
+	--fg-20: rgba(238, 241, 239, 0.2);
+	--accent: #4062bb;
+	--accent-30: rgba(64, 98, 187, 0.3);
+	--accent-20: rgba(64, 98, 187, 0.2);
+	--accent-10: rgba(64, 98, 187, 0.1);
+	--border: rgba(64, 98, 187, 0.2);
+	--surface: #1c2321;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	font-family:
+		var(--font-sans), 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code',
+		monospace;
+	background: var(--bg);
+	color: var(--fg);
+	line-height: 1.8;
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background: var(--accent);
+	color: var(--bg);
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--accent);
+	border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(64, 98, 187, 0.8);
+}
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+@keyframes wordUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes dotDrift {
+	0%,
+	100% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 15px 15px;
+	}
+}
+
+@keyframes scrollPulse {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scaleY(1);
+	}
+	50% {
+		opacity: 0.4;
+		transform: scaleY(0.5);
+	}
+}
+
+@keyframes tickerScroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
