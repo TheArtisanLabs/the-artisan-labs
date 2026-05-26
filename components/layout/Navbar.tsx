@@ -128,7 +128,7 @@ export default function Navbar() {
         <span
           className={cn(
             "block h-0.5 w-6 rounded-sm bg-(--fg) transition-all duration-300",
-            open && "translate-y-[7px] rotate-45",
+            open && "translate-y-1.75 rotate-45",
           )}
         />
         <span
@@ -140,7 +140,7 @@ export default function Navbar() {
         <span
           className={cn(
             "block h-0.5 w-6 rounded-sm bg-(--fg) transition-all duration-300",
-            open && "-translate-y-[7px] -rotate-45",
+            open && "-translate-y-1.75 -rotate-45",
           )}
         />
       </button>
