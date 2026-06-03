@@ -6,11 +6,14 @@ import { cn } from '@/lib/utils';
 import { useTheme } from '@/lib/theme';
 
 const NAV_LINKS = [
-	{ href: '#about', label: '~/about' },
-	{ href: '#services', label: '~/services' },
-	{ href: '#portfolio', label: '~/portfolio' },
-	{ href: '#stack', label: '~/stack' },
-	{ href: '#contact', label: '~/contact' },
+	{ href: '#about', label: '~/About' },
+	{ href: '#process', label: '~/Process' },
+	{ href: '#services', label: '~/Services' },
+	{ href: '#portfolio', label: '~/Portfolio' },
+	{ href: '#team', label: '~/Team' },
+	{ href: '#stack', label: '~/Stack' },
+	{ href: '#faq', label: '~/FAQ' },
+	{ href: '#contact', label: '~/Contact' },
 ];
 
 export default function Navbar() {
@@ -34,11 +37,16 @@ export default function Navbar() {
 		const sections = document.querySelectorAll('section[id]');
 		const obs = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((e) => {
-					if (e.isIntersecting) setActive(e.target.id);
-				});
+				const best = entries.reduce(
+					(max, e) =>
+						e.intersectionRatio > (max?.intersectionRatio ?? 0)
+							? e
+							: max,
+					null as IntersectionObserverEntry | null
+				);
+				if (best?.isIntersecting) setActive(best.target.id);
 			},
-			{ threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
+			{ threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
 		);
 		sections.forEach((s) => obs.observe(s));
 		return () => obs.disconnect();
@@ -67,8 +75,8 @@ export default function Navbar() {
 
 			<ul
 				className={cn(
-					'flex items-center gap-8 max-sm:fixed max-sm:top-16 max-sm:right-0 max-sm:h-screen max-sm:w-70 max-sm:flex-col max-sm:justify-center max-sm:gap-6 max-sm:border-l max-sm:border-(--border) max-sm:bg-(--bg)/98 max-sm:backdrop-blur-[20px] max-sm:transition-all max-sm:duration-300',
-					open ? 'max-sm:right-0' : 'max-sm:-right-full'
+					'flex items-center gap-8 max-lg:fixed max-lg:top-16 max-lg:right-0 max-lg:h-screen max-lg:w-70 max-lg:flex-col max-lg:justify-center max-lg:gap-6 max-lg:border-l max-lg:border-(--border) max-lg:bg-(--bg)/98 max-lg:backdrop-blur-[20px] max-lg:transition-all max-lg:duration-300',
+					open ? 'max-lg:right-0' : 'max-lg:-right-full'
 				)}
 			>
 				{NAV_LINKS.map((link) => (
@@ -138,7 +146,7 @@ export default function Navbar() {
 			</ul>
 
 			<button
-				className="hidden flex-col gap-1.25 border-none bg-transparent p-2 max-sm:flex"
+				className="hidden flex-col gap-1.25 border-none bg-transparent p-2 max-lg:flex"
 				onClick={() => setOpen((prev) => !prev)}
 				aria-label="Menu"
 			>

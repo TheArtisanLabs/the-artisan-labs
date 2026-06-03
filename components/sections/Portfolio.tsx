@@ -26,7 +26,7 @@ export default function Portfolio() {
 						className="pointer-events-none absolute inset-x-0 -top-24 z-2 text-[clamp(80px,12vw,180px)] leading-none font-normal tracking-tighter select-none"
 						style={{ color: 'var(--accent)', opacity: 0.12 }}
 					>
-						03
+						04
 					</div>
 					<StaggerGroup className="grid grid-cols-1 gap-6 md:grid-cols-[2fr_1fr]">
 						{projects?.map((p) => (

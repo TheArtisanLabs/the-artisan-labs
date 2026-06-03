@@ -26,7 +26,7 @@ export default function Services() {
 						className="pointer-events-none absolute -top-16 right-10 z-2 text-[clamp(80px,12vw,180px)] leading-none font-normal tracking-tighter select-none"
 						style={{ color: 'var(--accent)', opacity: 0.12 }}
 					>
-						02
+						03
 					</div>
 					<StaggerGroup className="grid gap-6 md:grid-cols-2">
 						{services?.map((s) => (

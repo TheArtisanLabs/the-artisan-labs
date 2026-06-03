@@ -31,7 +31,7 @@ export default function Stack() {
 					className="pointer-events-none absolute top-1/2 left-1/2 z-2 flex -translate-x-1/2 -translate-y-1/2 text-[clamp(80px,12vw,180px)] leading-none font-normal tracking-tighter select-none"
 					style={{ color: 'var(--accent)', opacity: 0.12 }}
 				>
-					04
+					06
 				</div>
 				<div className="mt-8 w-full overflow-hidden">
 					<div className="flex w-max animate-[tickerScroll_40s_linear_infinite]">

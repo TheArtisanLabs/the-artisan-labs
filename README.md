@@ -20,6 +20,9 @@ A single-page agency landing site built with Next.js 16, Convex, and Tailwind CS
 ```bash
 npm install
 npm run dev
+
+on a different terminal:
+npx convex dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -35,14 +38,14 @@ On first load, each section seeds its Convex table with defaults if empty. Table
 
 ## Scripts
 
-| Command             | Description              |
-| ------------------- | ------------------------ |
-| `npm run dev`       | Start dev server         |
-| `npm run build`     | Production build         |
-| `npm run lint`      | ESLint check             |
-| `npm run format`    | Prettier format all      |
-| `npx convex dev`    | Run Convex dev server    |
-| `npx convex deploy` | Deploy Convex functions  |
+| Command             | Description             |
+| ------------------- | ----------------------- |
+| `npm run dev`       | Start dev server        |
+| `npm run build`     | Production build        |
+| `npm run lint`      | ESLint check            |
+| `npm run format`    | Prettier format all     |
+| `npx convex dev`    | Run Convex dev server   |
+| `npx convex deploy` | Deploy Convex functions |
 
 ## Project Structure
 

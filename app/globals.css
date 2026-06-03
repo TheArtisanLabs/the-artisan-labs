@@ -12,8 +12,8 @@
 	--bg: #eef1ef;
 	--fg: #1c2321;
 	--fg-80: rgba(28, 35, 33, 0.8);
-	--fg-50: rgba(28, 35, 33, 0.5);
-	--fg-20: rgba(28, 35, 33, 0.2);
+	--fg-50: rgba(28, 35, 33, 0.65);
+	--fg-20: rgba(28, 35, 33, 0.35);
 	--accent: #4062bb;
 	--accent-30: rgba(64, 98, 187, 0.3);
 	--accent-20: rgba(64, 98, 187, 0.2);
@@ -116,4 +116,75 @@ body {
 	100% {
 		transform: translateX(-50%);
 	}
+}
+
+@keyframes glowPulse {
+	0%,
+	100% {
+		opacity: 0.6;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.08);
+	}
+}
+
+@keyframes wordRise {
+	from {
+		opacity: 0;
+		transform: translateY(48px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes constFadeIn {
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes promptBlink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	45%,
+	55% {
+		opacity: 0;
+	}
+}
+
+.constellation {
+	opacity: 0;
+	animation: constFadeIn 2.2s ease 0.2s forwards;
+}
+
+.constellation-el {
+	position: absolute;
+	white-space: nowrap;
+	font-weight: 400;
+	color: var(--fg);
+	user-select: none;
+	will-change: transform;
+	transition: color 0.8s ease;
+	pointer-events: none;
+}
+
+.constellation-el.bright {
+	color: var(--accent);
 }
