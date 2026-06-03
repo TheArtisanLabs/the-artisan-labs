@@ -29,7 +29,7 @@ export default function Process() {
 					</div>
 					<SectionHeader label="// how we work" title="The process" />
 				</div>
-				<p className="mb-12 max-w-140 text-sm leading-relaxed text-(--fg-50)">
+				<p className="mb-12 max-w-140 text-[clamp(15px,1.2vw,18px)] text-(--fg-80)">
 					From idea to launch, we follow a proven rhythm that keeps
 					every project on track and every detail accounted for.
 				</p>
