@@ -8,10 +8,13 @@
  * @module
  */
 
+import type * as faq from "../faq.js";
 import type * as phrases from "../phrases.js";
 import type * as portfolio from "../portfolio.js";
+import type * as process from "../process.js";
 import type * as services from "../services.js";
 import type * as stack from "../stack.js";
+import type * as team from "../team.js";
 
 import type {
   ApiFromModules,
@@ -20,10 +23,13 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  faq: typeof faq;
   phrases: typeof phrases;
   portfolio: typeof portfolio;
+  process: typeof process;
   services: typeof services;
   stack: typeof stack;
+  team: typeof team;
 }>;
 
 /**

@@ -1,37 +1,22 @@
 'use client';
 
+import { useQuery, useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
 import { Section, SectionInner, SectionHeader } from '@/components/ui/Section';
 import StaggerGroup from '@/components/ui/StaggerGroup';
 import TeamCard from '@/components/ui/TeamCard';
-
-const MEMBERS = [
-	{
-		initials: 'JD',
-		name: 'Jules Desmarais',
-		role: 'Founder & Lead Developer',
-		bio: 'Full-stack engineer with a design sensibility. 15 years building for startups and enterprises. Rust, React, and systems thinking.',
-	},
-	{
-		initials: 'AN',
-		name: 'Aiko Nakamura',
-		role: 'Mobile & Frontend Lead',
-		bio: 'Flutter and Swift specialist who obsesses over animation curves and gesture handling. Previously at a top-50 App Store publisher.',
-	},
-	{
-		initials: 'TR',
-		name: 'Tom\u00e1s Reyes',
-		role: 'Backend & Infrastructure',
-		bio: 'Distributed systems, databases, and DevOps. Keeps the production stack boring and reliable so the fun stuff works at scale.',
-	},
-	{
-		initials: 'EL',
-		name: 'Elena Larsson',
-		role: 'Product Designer',
-		bio: 'Design systems, interaction design, and user research. Bridges the gap between what stakeholders ask for and what users actually need.',
-	},
-];
+import { useEffect } from 'react';
 
 export default function Team() {
+	const members = useQuery(api.team.getAll);
+	const seedTeam = useMutation(api.team.seed);
+
+	useEffect(() => {
+		if (members?.length === 0) {
+			seedTeam();
+		}
+	}, [members, seedTeam]);
+
 	return (
 		<Section id="team">
 			<SectionInner>
@@ -49,9 +34,9 @@ export default function Team() {
 					managers — just builders.
 				</p>
 				<StaggerGroup className="grid gap-6 md:grid-cols-2">
-					{MEMBERS.map((m) => (
+					{members?.map((m) => (
 						<TeamCard
-							key={m.initials}
+							key={m._id}
 							initials={m.initials}
 							name={m.name}
 							role={m.role}

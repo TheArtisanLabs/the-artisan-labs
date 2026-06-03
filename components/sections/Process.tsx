@@ -1,37 +1,22 @@
 'use client';
 
+import { useQuery, useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
 import { Section, SectionInner, SectionHeader } from '@/components/ui/Section';
 import StaggerGroup from '@/components/ui/StaggerGroup';
 import ProcessCard from '@/components/ui/ProcessCard';
-
-const STEPS = [
-	{
-		num: '[01]',
-		icon: '\u2615',
-		name: 'Discover',
-		desc: "We learn your domain, your users, and your constraints. No assumptions \u2014 just research, interviews, and a shared understanding of what success looks like.",
-	},
-	{
-		num: '[02]',
-		icon: '\u25C6',
-		name: 'Design',
-		desc: "Interactive prototypes, not static mockups. We validate flows and interactions before writing a line of production code. You see it working before we build it.",
-	},
-	{
-		num: '[03]',
-		icon: '\u2699',
-		name: 'Build',
-		desc: "Clean architecture, thorough tests, daily builds. We ship incrementally so you can touch working software at every stage \u2014 no black boxes, no surprise rewrites.",
-	},
-	{
-		num: '[04]',
-		icon: '\u25B2',
-		name: 'Launch & grow',
-		desc: "Deployment, monitoring, and post-launch support. We stay with you after go-live to handle edge cases, iterate on feedback, and keep the product healthy.",
-	},
-];
+import { useEffect } from 'react';
 
 export default function Process() {
+	const steps = useQuery(api.process.getAll);
+	const seedProcess = useMutation(api.process.seed);
+
+	useEffect(() => {
+		if (steps?.length === 0) {
+			seedProcess();
+		}
+	}, [steps, seedProcess]);
+
 	return (
 		<Section id="process">
 			<SectionInner>
@@ -49,9 +34,9 @@ export default function Process() {
 					every project on track and every detail accounted for.
 				</p>
 				<StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-					{STEPS.map((s) => (
+					{steps?.map((s) => (
 						<ProcessCard
-							key={s.num}
+							key={s._id}
 							num={s.num}
 							icon={s.icon}
 							name={s.name}

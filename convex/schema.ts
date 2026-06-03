@@ -25,4 +25,23 @@ export default defineSchema({
 		text: v.string(),
 		order: v.number(),
 	}).index('by_order', ['order']),
+	process: defineTable({
+		num: v.string(),
+		icon: v.string(),
+		name: v.string(),
+		desc: v.string(),
+		order: v.number(),
+	}).index('by_order', ['order']),
+	team: defineTable({
+		initials: v.string(),
+		name: v.string(),
+		role: v.string(),
+		bio: v.string(),
+		order: v.number(),
+	}).index('by_order', ['order']),
+	faq: defineTable({
+		q: v.string(),
+		a: v.string(),
+		order: v.number(),
+	}).index('by_order', ['order']),
 });
