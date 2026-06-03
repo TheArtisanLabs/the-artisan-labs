@@ -37,7 +37,7 @@ export default function PortfolioCard({
 				</span>
 			</div>
 			<div className="px-6 py-5">
-				<h3 className="font-heading mb-2 text-base font-thin tracking-widest text-(--fg) transition-colors duration-300">
+				<h3 className="font-heading mb-2 text-base font-normal tracking-widest text-(--fg) transition-colors duration-300">
 					{name}
 				</h3>
 				<div className="flex flex-wrap gap-2">

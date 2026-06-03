@@ -10,7 +10,7 @@ export default function ServiceCard({ num, name, desc }: ServiceCardProps) {
 			<span className="mb-3 block text-xs tracking-wider text-(--accent)">
 				{num}
 			</span>
-			<h3 className="font-heading ext-xl mb-2 font-thin tracking-widest text-(--fg)">
+			<h3 className="font-heading ext-xl mb-2 font-normal tracking-widest text-(--fg)">
 				{name}
 			</h3>
 			<p className="text-sm leading-relaxed text-(--fg-50)">{desc}</p>

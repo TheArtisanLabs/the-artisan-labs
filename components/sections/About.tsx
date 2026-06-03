@@ -18,7 +18,7 @@ export default function About() {
 						<span className="mb-4 block text-[13px] tracking-[3px] text-(--accent) uppercase">
 							{'// who we are'}
 						</span>
-						<h2 className="font-heading mb-6 text-[clamp(28px,4vw,48px)] leading-tight font-thin tracking-widest text-(--fg)">
+						<h2 className="font-heading mb-6 text-[clamp(28px,4vw,48px)] leading-tight font-normal tracking-widest text-(--fg)">
 							About
 						</h2>
 						<p className="max-w-160 text-[clamp(15px,1.2vw,18px)] text-(--fg-80)">

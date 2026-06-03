@@ -6,7 +6,7 @@ export default function CTA() {
 		<Section id="cta">
 			<SectionInner>
 				<Reveal className="rounded-xl border border-(--border) bg-(--bg) px-12 py-14 text-center">
-					<h2 className="font-heading mb-2 text-[clamp(24px,3vw,36px)] font-thin tracking-widest text-(--fg)">
+					<h2 className="font-heading mb-2 text-[clamp(24px,3vw,36px)] font-normal tracking-widest text-(--fg)">
 						Ready to build something?
 					</h2>
 					<p className="mx-auto mb-8 max-w-125 text-sm text-(--fg-50)">

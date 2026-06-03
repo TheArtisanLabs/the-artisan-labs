@@ -20,7 +20,7 @@ export default function ProcessCard({
 			<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-(--border) text-base text-(--accent) transition-all duration-300 group-hover:border-(--accent-40) group-hover:bg-(--accent-10)">
 				{icon}
 			</div>
-			<h3 className="font-heading mb-2 text-lg font-thin tracking-widest text-(--fg)">
+			<h3 className="font-heading mb-2 text-lg font-normal tracking-widest text-(--fg)">
 				{name}
 			</h3>
 			<p className="text-[12.5px] leading-relaxed text-(--fg-50)">

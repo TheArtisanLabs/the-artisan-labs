@@ -15,7 +15,7 @@ export default function Contact() {
 					<span className="mb-4 block text-[13px] tracking-[3px] text-(--accent) uppercase">
 						{"// let's build"}
 					</span>
-					<h2 className="font-heading mb-4 text-[clamp(28px,5vw,56px)] leading-tight font-thin tracking-widest text-(--fg)">
+					<h2 className="font-heading mb-4 text-[clamp(28px,5vw,56px)] leading-tight font-normal tracking-widest text-(--fg)">
 						Got something to build?
 					</h2>
 					<a

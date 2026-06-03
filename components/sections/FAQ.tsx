@@ -35,12 +35,10 @@ export default function FAQ() {
 						<div
 							key={faq._id}
 							className="cursor-pointer border-b border-(--border) py-5"
-							onClick={() =>
-								setOpenIdx(openIdx === i ? null : i)
-							}
+							onClick={() => setOpenIdx(openIdx === i ? null : i)}
 						>
-							<div className="flex select-none items-center justify-between gap-6">
-								<span className="font-heading text-[17px] leading-tight font-thin tracking-widest text-(--fg)">
+							<div className="flex items-center justify-between gap-6 select-none">
+								<span className="font-heading text-[17px] leading-tight font-normal tracking-widest text-(--fg)">
 									{faq.q}
 								</span>
 								<span
@@ -55,7 +53,7 @@ export default function FAQ() {
 							</div>
 							<div
 								className={cn(
-									'overflow-hidden transition-all duration-400 ease',
+									'ease overflow-hidden transition-all duration-400',
 									openIdx === i
 										? 'max-h-75 pt-4'
 										: 'max-h-0 pt-0'

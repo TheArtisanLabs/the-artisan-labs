@@ -67,7 +67,7 @@ export default function Navbar() {
 					height={526}
 					className="h-7 w-auto transition-opacity duration-300 hover:opacity-80 md:h-8"
 				/>
-				<span className="font-heading ml-2 text-sm font-thin tracking-widest text-(--fg-50) uppercase transition-opacity duration-300 hover:opacity-80">
+				<span className="font-heading ml-2 text-sm font-normal tracking-widest text-(--fg-50) uppercase transition-opacity duration-300 hover:opacity-80">
 					Artisan Labs
 				</span>
 				<span className="ml-0.5 inline-block h-[1.2em] w-2.5 bg-(--accent) align-bottom" />
