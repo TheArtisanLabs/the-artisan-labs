@@ -6,6 +6,7 @@ import { ConvexClientProvider } from '@/components/Providers/ConvexClientProvide
 import CustomCursor from '@/components/ui/CustomCursor';
 import Navbar from '@/components/layout/Navbar';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jetbrainsMono = JetBrains_Mono({
 	variable: '--font-jetbrains-mono',
@@ -40,6 +41,7 @@ export default function RootLayout({
 					</ThemeProvider>
 				</ConvexClientProvider>
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);
