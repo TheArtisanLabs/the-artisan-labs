@@ -16,23 +16,51 @@ export default function Reveal({
 	threshold = 0.15,
 }: RevealProps) {
 	const ref = useRef<HTMLDivElement>(null);
+	const done = useRef(false);
 
 	useEffect(() => {
 		const el = ref.current;
 		if (!el) return;
+
+		done.current = false;
+
+		const show = () => {
+			el.classList.add('visible');
+			done.current = true;
+		};
+
 		const obs = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((e) => {
-					if (e.isIntersecting) {
-						e.target.classList.add('visible');
-						obs.unobserve(e.target);
-					}
-				});
+				for (const e of entries) {
+					if (e.isIntersecting) show();
+				}
 			},
 			{ threshold }
 		);
 		obs.observe(el);
-		return () => obs.disconnect();
+
+		const mo = new MutationObserver(() => {
+			if (done.current) return;
+			const rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight && rect.bottom > 0) {
+				show();
+			}
+		});
+		mo.observe(el, { childList: true, subtree: true });
+
+		const raf = requestAnimationFrame(() => {
+			if (done.current) return;
+			const rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight - 1 && rect.bottom > 1) {
+				show();
+			}
+		});
+
+		return () => {
+			obs.disconnect();
+			mo.disconnect();
+			cancelAnimationFrame(raf);
+		};
 	}, [threshold]);
 
 	return (
