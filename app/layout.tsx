@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { Monda } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme';
 import { ConvexClientProvider } from '@/components/Providers/ConvexClientProvider';
@@ -8,8 +8,8 @@ import Navbar from '@/components/layout/Navbar';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const jetbrainsMono = JetBrains_Mono({
-	variable: '--font-jetbrains-mono',
+const monda = Monda({
+	variable: '--font-monda',
 	subsets: ['latin'],
 	weight: ['400', '500', '700'],
 });
@@ -29,7 +29,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={`${jetbrainsMono.variable} dark`}
+			className={`${monda.variable} dark`}
 			suppressHydrationWarning
 		>
 			<body className="min-h-full antialiased">
