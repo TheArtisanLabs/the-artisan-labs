@@ -22,12 +22,15 @@ export default function About() {
 							About
 						</h2>
 						<p className="max-w-160 text-[clamp(15px,1.2vw,18px)] text-(--fg-80)">
-							Artisan Labs is a tight-knit crew of developers and
-							designers. We obsess over the details most teams
-							skip — the micro-interactions, the load times, the
-							pixel alignment, the edge cases. We build software
-							the way craftspeople build furniture: slowly,
-							deliberately, and to last.
+							We're The Artisan Labs — a tight-knit crew of
+							builders who genuinely care about the work. No
+							bloated teams, no endless handoffs. Just six people
+							who each know their craft inside out, working
+							together to ship products that look great, run
+							smoothly, and actually solve problems. Whether you
+							need a website, a web app, or a mobile app, we've
+							got you covered from first line of code to launch
+							day.
 						</p>
 					</div>
 				</Reveal>
