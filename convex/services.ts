@@ -30,10 +30,7 @@ const DEFAULT_SERVICES = [
 export const getAll = query({
 	args: {},
 	handler: async (ctx) => {
-		return await ctx.db
-			.query('services')
-			.withIndex('by_order')
-			.collect();
+		return await ctx.db.query('services').withIndex('by_order').collect();
 	},
 });
 

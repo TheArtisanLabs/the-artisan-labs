@@ -34,10 +34,7 @@ const DEFAULT_MEMBERS = [
 export const getAll = query({
 	args: {},
 	handler: async (ctx) => {
-		return await ctx.db
-			.query('team')
-			.withIndex('by_order')
-			.collect();
+		return await ctx.db.query('team').withIndex('by_order').collect();
 	},
 });
 

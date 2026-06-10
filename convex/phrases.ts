@@ -10,10 +10,7 @@ const DEFAULT_PHRASES = [
 export const getAll = query({
 	args: {},
 	handler: async (ctx) => {
-		return await ctx.db
-			.query('phrases')
-			.withIndex('by_order')
-			.collect();
+		return await ctx.db.query('phrases').withIndex('by_order').collect();
 	},
 });
 

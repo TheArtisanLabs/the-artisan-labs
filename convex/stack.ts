@@ -17,10 +17,7 @@ const DEFAULT_STACK = [
 export const getAll = query({
 	args: {},
 	handler: async (ctx) => {
-		return await ctx.db
-			.query('stack')
-			.withIndex('by_order')
-			.collect();
+		return await ctx.db.query('stack').withIndex('by_order').collect();
 	},
 });
 

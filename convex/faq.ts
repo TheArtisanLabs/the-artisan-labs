@@ -31,10 +31,7 @@ const DEFAULT_FAQS = [
 export const getAll = query({
 	args: {},
 	handler: async (ctx) => {
-		return await ctx.db
-			.query('faq')
-			.withIndex('by_order')
-			.collect();
+		return await ctx.db.query('faq').withIndex('by_order').collect();
 	},
 });
 

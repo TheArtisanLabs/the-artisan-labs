@@ -84,8 +84,8 @@ export default function Stats() {
 					ref={ref}
 					className={cn(
 						'grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-(--border) md:grid-cols-4',
-						'opacity-0 translate-y-7.5 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
-						visible && 'opacity-100 translate-y-0'
+						'translate-y-7.5 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
+						visible && 'translate-y-0 opacity-100'
 					)}
 				>
 					{STATS.map((s) => (

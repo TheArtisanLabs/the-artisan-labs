@@ -7,6 +7,7 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import Navbar from '@/components/layout/Navbar';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { FC, PropsWithChildren } from 'react';
 
 const monda = Monda({
 	variable: '--font-monda',
@@ -21,11 +22,7 @@ export const metadata: Metadata = {
 	icons: '/images/logo/logo-transparent.png',
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<html
 			lang="en"
@@ -45,4 +42,6 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;

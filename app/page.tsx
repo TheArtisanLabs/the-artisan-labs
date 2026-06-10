@@ -10,7 +10,7 @@ import CTA from '@/components/sections/CTA';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/layout/Footer';
 
-export default function Home() {
+const Home = () => {
 	return (
 		<>
 			<Hero />
@@ -26,4 +26,6 @@ export default function Home() {
 			<Footer />
 		</>
 	);
-}
+};
+
+export default Home;
